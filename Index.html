@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dispensasi Siswa - SMAN 1 Magetan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Fredoka', sans-serif; }
+    
+    .gradient-bg { 
+      background: linear-gradient(180deg, #FFFFFF 0%, #E9D5FF 30%, #C084FC 100%); 
+      background-attachment: fixed;
+    }
+    
+    .card-glass { 
+      background: rgba(255, 255, 255, 0.75); 
+      backdrop-filter: blur(15px); 
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(168, 85, 247, 0.15);
+      transition: all 0.3s ease;
+    }
+    .card-glass:hover { transform: translateY(-5px); }
+
+    .input-custom { 
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #F3E8FF;
+      border-radius: 12px;
+      padding: 10px 14px;
+      width: 100%;
+      color: #6B21A8;
+      transition: 0.3s;
+    }
+    .input-custom:focus { outline: none; border-color: #A855F7; background: #fff; }
+
+    .btn-submit { 
+      background: linear-gradient(135deg, #A855F7, #9333EA);
+      color: white; font-weight: 700; border-radius: 20px; padding: 12px;
+      width: 100%; transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+    }
+    .btn-submit:hover { opacity: 0.9; transform: scale(1.02); }
+  </style>
+</head>
+<body class="h-full w-full gradient-bg overflow-auto">
+
+  <div class="max-w-6xl mx-auto p-6 md:p-10">
+    
+    <header class="mb-12 text-center md:text-left">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-purple-900 leading-tight">
+        Selamat Datang di Web<br>Dispensasi Siswa ✨
+      </h1>
+      <p class="text-purple-700 text-xl font-medium mt-1">SMAN 1 Magetan</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+      
+      <section class="card-glass p-6 md:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">📝</span>
+          <h2 class="text-xl font-bold text-purple-900">Ajukan Dispensasi Siswa</h2>
+        </div>
+        
+        <form id="dispenForm" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input type="text" placeholder="Nama Lengkap" class="input-custom" required>
+            
+            <input type="text" placeholder="Nama Guru Pemberi Izin" class="input-custom" required>
+            
+            <input type="text" placeholder="Alasan (Jujur & Jelas)" class="input-custom" required>
+            <input type="date" class="input-custom" required>
+            <div class="flex gap-2">
+              <input type="time" placeholder="Mulai" class="input-custom" required title="Waktu Mulai">
+              <input type="time" placeholder="Selesai" class="input-custom" required title="Waktu Selesai">
+            </div>
+          </div>
+          <button type="submit" class="btn-submit mt-4">Kirim Dispensasi 💜</button>
+        </form>
+      </section>
+
+      <section class="card-glass p-6 md:p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">🏫</span>
+          <h2 class="text-xl font-bold text-purple-900">Identitas Sekolah</h2>
+        </div>
+        <div class="space-y-3 text-purple-800 text-sm md:text-base leading-relaxed">
+          <p><strong>NPSN:</strong> 20509318</p>
+          <p><strong>Status:</strong> Negeri</p>
+          <p><strong>Alamat:</strong> Jl. Monginsidi 24, RT 1/RW 7, Selosari, Kec. Magetan, Kab. Magetan, Jawa Timur</p>
+          <p><strong>Kode Pos:</strong> 63313</p>
+        </div>
+      </section>
+
+      <section class="card-glass p-6 md:p-8 md:col-span-2">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">📋</span>
+          <h2 class="text-xl font-bold text-purple-900">Riwayat & Presensi</h2>
+        </div>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-purple-900">
+            <thead class="bg-purple-100/50">
+              <tr>
+                <th class="py-3 px-4 rounded-l-xl">Nama Siswa</th>
+                <th class="py-3 px-4">Tanggal</th>
+                <th class="py-3 px-4">Alasan</th>
+                <th class="py-3 px-4 rounded-r-xl">Waktu</th>
+              </tr>
+            </thead>
+            <tbody id="historyTable">
+              <tr class="border-b border-purple-100">
+                <td class="py-4 px-4 font-semibold">Bagas Smasa</td>
+                <td class="py-4 px-4">10 Feb 2026</td>
+                <td class="py-4 px-4 italic">Lomba Seni Kabupaten</td>
+                <td class="py-4 px-4 font-bold text-purple-600">08:00 - 14:00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="text-center text-white font-medium opacity-80 text-sm mb-10 drop-shadow">
+      © 2024 SMAN 1 Magetan Digital System • Created with 💜
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('dispenForm').onsubmit = function(e) {
+      e.preventDefault();
+      alert("✨ Dispensasi berhasil diajukan! Pastikan datamu sudah masuk di riwayat.");
+    };
+  </script>
+</body>
+</html>
